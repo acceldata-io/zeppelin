@@ -179,7 +179,7 @@
                 <datanucleus.apijdo.version>4.2.4</datanucleus.apijdo.version>
                 <spark.version>3.2.2</spark.version>
                 <protobuf.version>2.5.0</protobuf.version>
-                <py4j.version>0.10.9.2</py4j.version>
+                <py4j.version>0.10.9.5</py4j.version>
             </properties>
         </profile>
 
