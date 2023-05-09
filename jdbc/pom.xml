@@ -35,11 +35,10 @@
     <!--library versions-->
     <interpreter.name>jdbc</interpreter.name>
     <postgresql.version>9.4-1201-jdbc41</postgresql.version>
-    <hadoop.version>${hadoop2.7.version}</hadoop.version>
+    <hadoop.version>${hadoop3.2.version}</hadoop.version>
     <h2.version>1.4.190</h2.version>
     <commons.dbcp2.version>2.0.1</commons.dbcp2.version>
-    <hive2.version>2.3.4</hive2.version>
-
+    <hive3.version>3.1.4.3.2.2.0-1</hive3.version>
     <!--test library versions-->
     <mockrunner.jdbc.version>1.0.8</mockrunner.jdbc.version>
   </properties>
@@ -144,11 +143,16 @@
       </exclusions>
     </dependency>
 
+
+    <dependency>
+      <groupId>org.apache.thrift</groupId>
+      <artifactId>libthrift</artifactId>
+      <version>0.14.1</version>
+    </dependency>
     <dependency>
       <groupId>org.apache.hive</groupId>
       <artifactId>hive-jdbc</artifactId>
-      <version>${hive2.version}</version>
-      <scope>provided</scope>
+      <version>${hive3.version}</version>
       <exclusions>
         <exclusion>
           <groupId>org.apache.hadoop</groupId>
@@ -173,7 +177,6 @@
       <groupId>org.apache.httpcomponents</groupId>
       <artifactId>httpcore</artifactId>
       <version>4.4.1</version>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.httpcomponents</groupId>
@@ -216,7 +219,7 @@
     <profile>
       <id>jdbc-phoenix</id>
       <properties>
-        <phoenix.version>4.7.0</phoenix.version>
+        <phoenix.version>5.0.0-HBase-2.0</phoenix.version>
       </properties>
       <dependencies>
         <dependency>
@@ -228,7 +231,7 @@
         <dependency>
           <groupId>xerces</groupId>
           <artifactId>xercesImpl</artifactId>
-          <version>2.11.0.SP5</version>
+          <version>2.11.0</version>
         </dependency>
       </dependencies>
     </profile>
@@ -297,7 +300,7 @@
     <profile>
       <id>jdbc-hadoop3</id>
       <properties>
-        <hadoop-common.version>${hadoop3.0.version}</hadoop-common.version>
+        <hadoop-common.version>${hadoop3.2.version}</hadoop-common.version>
       </properties>
       <dependencies>
         <dependency>
