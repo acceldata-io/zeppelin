@@ -17,7 +17,7 @@ import subprocess
 from datetime import datetime, timedelta
 
 def main(file, cmd):
-    print cmd, "writing to", file
+    print(cmd, "writing to", file)
     out = open(file, "w")
     count = 0
     process = subprocess.Popen(cmd,
@@ -47,7 +47,7 @@ def main(file, cmd):
 
 if __name__ == "__main__":
     if sys.argv < 1:
-        print "Usage: %s [file info]" % sys.argv[0]
+        print("Usage: %s [file info]" % sys.argv[0])
         sys.exit(1)
 
     sys.exit(main(sys.argv[1], sys.argv[2:]))

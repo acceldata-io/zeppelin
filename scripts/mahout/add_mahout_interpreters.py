@@ -68,9 +68,9 @@ class ZeppelinTerpWrangler:
 
         new_terp_id = new_terp_name
         if self._terpExists(new_terp_name):
-            print "Found existing '%s' interpreter..." % new_terp_name
+            print("Found existing '%s' interpreter..." % new_terp_name)
             if overwrite_existing:
-                print "deleting %s from interpreter.json" %new_terp_name
+                print("deleting %s from interpreter.json" %new_terp_name)
                 del self.interpreter_json['interpreterSettings'][self._getTerpID(new_terp_name)]
             else:
                 print "exiting program."
