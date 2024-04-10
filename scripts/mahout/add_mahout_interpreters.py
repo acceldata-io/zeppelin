@@ -73,7 +73,7 @@ class ZeppelinTerpWrangler:
                 print("deleting %s from interpreter.json" %new_terp_name)
                 del self.interpreter_json['interpreterSettings'][self._getTerpID(new_terp_name)]
             else:
-                print "exiting program."
+                print("exiting program.")
                 exit(1)
 
         orig_terp_id = self._getTerpID(original_terp_name)
@@ -83,7 +83,7 @@ class ZeppelinTerpWrangler:
         self.interpreter_json['interpreterSettings'][orig_terp_id])
         self.interpreter_json['interpreterSettings'][new_terp_id]['name'] = new_terp_name
         self.interpreter_json['interpreterSettings'][new_terp_id]['id'] = new_terp_id
-        print "created new interpreter '%s' from interpreter '%s" % (new_terp_name, original_terp_name)
+        print("created new interpreter '%s' from interpreter '%s'" % (new_terp_name, original_terp_name))
 
     def _readTerpJson(self):
         with open(self.interpreter_json_path) as f:
@@ -99,7 +99,7 @@ class ZeppelinTerpWrangler:
 
     def _addTerpDep(self, terpName="", dep="", exclusions=None):
         if self.interpreter_json == {}:
-            print "no interpreter.json loaded, reading last one downloaded"
+            print("no interpreter.json loaded, reading last one downloaded")
             self._readTerpJson()
         terp_id = self._getTerpID(terpName)
         deps = self.interpreter_json['interpreterSettings'][terp_id]['dependencies']
@@ -126,7 +126,7 @@ class ZeppelinTerpWrangler:
 
     def addMahoutConfig(self, terpName, mahout_home, mahout_version = "0.12.2"):
 
-        print "updating '%s' with Apache Mahout dependencies and settings" % terpName
+        print("updating '%s' with Apache Mahout dependencies and settings" % terpName)
 
         terpDeps = ["%s/mahout-math-%s.jar" %  (mahout_home, mahout_version),
                     "%s/mahout-math-scala_2.10-%s.jar" %  (mahout_home, mahout_version)]
@@ -173,38 +173,38 @@ def valid_zeppelin_home(path):
 if args.zeppelin_home == None:
     zeppelin_home = getcwd()
     if (zeppelin_home.split("/")[-1] == "bin") and (isfile("zeppelin-daemon.sh")):
-        print "we're in the zeppelin/bin"
+        print("we're in the zeppelin/bin")
         zeppelin_home = "/".join(zeppelin_home.split("/")[:-1])
-    print "--zeppelin_home not specified, using %s" % zeppelin_home
+    print("--zeppelin_home not specified, using %s" % zeppelin_home)
 else:
     zeppelin_home = args.zeppelin_home
 
 
 if not valid_zeppelin_home(zeppelin_home):
-    print "%s does not appear to be a valid ZEPPELIN_HOME - e.g. the top level directory of the ZEPPELIN install" % zeppelin_home
+    print("%s does not appear to be a valid ZEPPELIN_HOME - e.g. the top level directory of the ZEPPELIN install" % zeppelin_home)
     exit(1)
 else:
-    print "ZEPPELIN_HOME validated"
+    print("ZEPPELIN_HOME validated")
 
 interpreter_json_path = zeppelin_home + "/conf/interpreter.json"
 
 if not isfile(interpreter_json_path):
-    print "interpreter.json doesn't exist. Checking weather Zeppelin is running."
+    print("interpreter.json doesn't exist. Checking whether Zeppelin is running.")
     status = call(["bin/zeppelin-daemon.sh", 'status'], cwd=zeppelin_home)
     if status == 1:
-        print "Zeppelin doesn't appear to be running- it is possible that Zeppelin has never been run (interpreter.json is created when Zeppelin is run)"
-        print "I'm going to try to start Zeppelin to create interpreter.json"
+        print("Zeppelin doesn't appear to be running- it is possible that Zeppelin has never been run (interpreter.json is created when Zeppelin is run)")
+        print("I'm going to try to start Zeppelin to create interpreter.json")
         call(["bin/zeppelin-daemon.sh", 'start'], cwd=zeppelin_home)
         from time import sleep
         sleep(3)
     else:
-        print "We're in the correct top-level directory, Zeppelin appears to be running, but there is no 'interpreter.json'. \
-          \nThis is a confusing case.  Please try restarting Zeppelin, but if that doesn't work reach out on the mailing list."
+        print("We're in the correct top-level directory, Zeppelin appears to be running, but there is no 'interpreter.json'. \
+          \nThis is a confusing case.  Please try restarting Zeppelin, but if that doesn't work reach out on the mailing list.")
 
 if isfile(interpreter_json_path):
     z = ZeppelinTerpWrangler(interpreter_json_path)
 else:
-    print "'interpreter.json' not found in %s/conf" % args.zeppelin_home
+    print("'interpreter.json' not found in %s/conf" % args.zeppelin_home)
     exit(1)
 
 #######################################################################################################################
@@ -214,14 +214,14 @@ else:
 
 def download_mahout():
     if args.force_download:
-        print "--force_download: OK, deleting existing tar if it exists."
+        print("--force_download: OK, deleting existing tar if it exists.")
         call(["rm", "%s/%s" % (zeppelin_home, tar_name)])
         return True
     elif isfile("%s/%s" % (zeppelin_home, tar_name)):
-        print "%s found, skipping download" % tar_name
+        print("%s found, skipping download" % tar_name)
         return False
     elif args.mahout_home:
-        print "--mahout_home set, skipping download"
+        print("--mahout_home set, skipping download")
         return False
     else:
         return True
@@ -260,13 +260,13 @@ if isfile(zeppelin_env_sh_path):
     with open(zeppelin_env_sh_path, 'rb') as f:
         zeppelin_env_sh = f.readlines()
     if any(["export MAHOUT_HOME=" in line for line in zeppelin_env_sh]):
-        print "'export MAHOUT_HOME=...' already exists in zeppelin_env.sh, not appending"
+        print("'export MAHOUT_HOME=...' already exists in zeppelin_env.sh, not appending")
     else:
-        print "appending '%s' to conf/zeppelin-env.sh" % mahout_home_str
+        print("appending '%s' to conf/zeppelin-env.sh" % mahout_home_str)
         with open(zeppelin_env_sh_path, 'a') as f:
             f.write(mahout_home_str)
 else:
-    print "appending '%s' to conf/zeppelin-env.sh" % mahout_home_str
+    print("appending '%s' to conf/zeppelin-env.sh" % mahout_home_str)
     with open(zeppelin_env_sh_path, 'wb') as f:
         f.write(mahout_home_str)
 
@@ -276,15 +276,15 @@ else:
 #
 #######################################################################################################################
 if not args.restart_later:
-    print "restarting Apache Zeppelin to load new interpreters..."
+    print("restarting Apache Zeppelin to load new interpreters...")
     check_call(["bin/zeppelin-daemon.sh", 'restart'], cwd= zeppelin_home)
 else:
-    print "--restart_later flag detected: remember to restart Zeppelin to see new Mahout interpreters!!"
+    print("--restart_later flag detected: remember to restart Zeppelin to see new Mahout interpreters!!")
 
 #######################################################################################################################
 # Good bye
 #######################################################################################################################
 
-print "---------------------------------------------------------------------------------------------------------------"
-print "all done! Thanks for using Apache Mahout"
-print "bye"
+print("---------------------------------------------------------------------------------------------------------------")
+print("all done! Thanks for using Apache Mahout")
+print("bye")
