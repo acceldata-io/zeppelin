@@ -87,6 +87,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-spec-reporter": "0.0.31",
     "karma-webpack": "^3.0.5",
+    "lodash": "~4.17.21",
     "load-grunt-tasks": "^0.4.0",
     "mini-css-extract-plugin": "^0.4.4",
     "ng-annotate-loader": "^0.2.0",
