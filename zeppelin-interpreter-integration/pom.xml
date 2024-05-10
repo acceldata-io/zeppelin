@@ -23,12 +23,12 @@
   <parent>
     <artifactId>zeppelin</artifactId>
     <groupId>org.apache.zeppelin</groupId>
-    <version>0.10.1.3.3.0.0-SNAPSHOT</version>
+    <version>0.10.1.3.2.3.0-2</version>
     <relativePath>..</relativePath>
   </parent>
 
   <artifactId>zeppelin-interpreter-integration</artifactId>
-  <version>0.10.1.3.3.0.0-SNAPSHOT</version>
+  <version>0.10.1.3.2.3.0-2</version>
   <packaging>jar</packaging>
   <name>Zeppelin: Interpreter Integration Test</name>
 
