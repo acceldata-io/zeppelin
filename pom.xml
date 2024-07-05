@@ -60,10 +60,9 @@
     <module>rlang</module>
     <module>zeppelin-jupyter-interpreter</module>
     <module>zeppelin-jupyter-interpreter-shaded</module>
-
-
+    <module>spark</module>
     <module>markdown</module>
-
+    <module>python</module>
     <module>angular</module>
     <module>shell</module>
     <module>livy</module>
