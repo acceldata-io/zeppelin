@@ -12,6 +12,8 @@
  * limitations under the License.
  */
 
+import _ from 'lodash';
+
 angular.module('zeppelinWebApp').service('noteActionService', noteActionService);
 
 function noteActionService(websocketMsgSrv, $location, noteRenameService, noteListFactory) {

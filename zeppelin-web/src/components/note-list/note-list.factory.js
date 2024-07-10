@@ -12,6 +12,8 @@
  * limitations under the License.
  */
 
+import _ from 'lodash';
+
 angular.module('zeppelinWebApp').factory('noteListFactory', NoteListFactory);
 
 function NoteListFactory(arrayOrderingSrv, TRASH_FOLDER_ID) {

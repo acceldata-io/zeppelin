@@ -16,6 +16,7 @@ import {SpellResult} from '../../spell';
 import {isParagraphRunning, ParagraphStatus} from './paragraph.status';
 
 import moment from 'moment';
+import _ from 'lodash';
 import DiffMatchPatch from 'diff-match-patch';
 
 require('moment-duration-format');

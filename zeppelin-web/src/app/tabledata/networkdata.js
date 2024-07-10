@@ -14,6 +14,7 @@
 
 import TableData from './tabledata';
 import {DatasetType} from './dataset';
+import _ from 'lodash';
 
 /**
  * Create network data object from paragraph graph type result

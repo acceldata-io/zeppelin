@@ -13,6 +13,7 @@
  */
 
 import moment from 'moment';
+import _ from 'lodash';
 
 import DatasetFactory from '../../../tabledata/datasetfactory';
 import TableVisualization from '../../../visualization/builtins/visualization-table';

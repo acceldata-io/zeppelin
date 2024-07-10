@@ -12,6 +12,8 @@
  * limitations under the License.
  */
 
+import _ from 'lodash';
+
 angular.module('zeppelinWebApp').controller('NotebookRepositoryCtrl', NotebookRepositoryCtrl);
 
 function NotebookRepositoryCtrl($http, baseUrlSrv, ngToast) {

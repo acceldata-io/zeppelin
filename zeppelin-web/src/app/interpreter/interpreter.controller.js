@@ -13,6 +13,7 @@
  */
 
 import {ParagraphStatus} from '../notebook/paragraph/paragraph.status';
+import _ from 'lodash';
 
 angular.module('zeppelinWebApp').controller('InterpreterCtrl', InterpreterCtrl);
 
@@ -443,7 +444,7 @@ function InterpreterCtrl($rootScope, $scope, $http, baseUrlSrv, ngToast, $timeou
   };
 
   $scope.newInterpreterGroupChange = function() {
-    let el = _.pluck(_.filter($scope.availableInterpreters, {'name': $scope.newInterpreterSetting.group}),
+    let el = _.map(_.filter($scope.availableInterpreters, {'name': $scope.newInterpreterSetting.group}),
       'properties');
     let properties = {};
     for (let i = 0; i < el.length; i++) {
