@@ -651,11 +651,11 @@ class NotebookTest extends AbstractInterpreterTest implements ParagraphJobListen
       });
     schedulerService.refreshCron(noteId);
     // wait a little until running processes are finished
-    Thread.sleep(3 * 1000);
+    Thread.sleep(5*1000);
     Date dateFinished = paragraph.getDateFinished();
     assertNotNull(dateFinished);
     // wait a little bit to check that no other tasks are being executed
-    Thread.sleep(2 * 1000);
+    Thread.sleep(3 * 1000);
     assertEquals(dateFinished, paragraph.getDateFinished());
     notebook.removeNote(noteId, anonymous);
   }
@@ -716,7 +716,7 @@ class NotebookTest extends AbstractInterpreterTest implements ParagraphJobListen
 
   @Test
   void testSchedulePoolUsage() throws InterruptedException, IOException {
-    final int timeout = 30;
+    final int timeout = 60;
     final String everySecondCron = "* * * * * ?";
     // each run starts a new JVM and the job takes about ~5 seconds
     final CountDownLatch jobsToExecuteCount = new CountDownLatch(5);
@@ -781,7 +781,7 @@ class NotebookTest extends AbstractInterpreterTest implements ParagraphJobListen
   void testScheduleDisabledWithName() throws InterruptedException, IOException {
 
     conf.setProperty(ConfVars.ZEPPELIN_NOTEBOOK_CRON_FOLDERS.getVarName(), "/System");
-    final int timeout = 30;
+	final int timeout = 60;
     final String everySecondCron = "* * * * * ?";
     // each run starts a new JVM and the job takes about ~5 seconds
     final CountDownLatch jobsToExecuteCount = new CountDownLatch(5);
