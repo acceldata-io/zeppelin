@@ -50,16 +50,15 @@
   </scm>
 
   <inceptionYear>2013</inceptionYear>
-
   <modules>
     <module>build-tools</module>
     <module>zeppelin-interpreter-parent</module>
     <module>zeppelin-interpreter</module>
     <module>zeppelin-interpreter-shaded</module>
     <module>zeppelin-zengine</module>
-    <module>zeppelin-jupyter-interpreter</module>
-    <module>zeppelin-jupyter-interpreter-shaded</module>
+    <module>python</module>
     <module>markdown</module>
+    <module>spark</module>
     <module>angular</module>
     <module>shell</module>
     <module>livy</module>
@@ -69,7 +68,6 @@
     <module>zeppelin-client-examples</module>
     <module>zeppelin-web</module>
     <module>zeppelin-server</module>
-    <module>zeppelin-jupyter</module>
     <module>zeppelin-plugins</module>
     <module>zeppelin-distribution</module>
     <module>zeppelin-test</module>
