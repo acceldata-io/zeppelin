@@ -319,7 +319,7 @@ class RecoveryTest extends AbstractTestRestApi {
       // shutdown zeppelin and restart it
       zepServer.shutDown();
       zepServer.start();
-
+      Thread.Sleep(5000);
       // wait until paragraph is finished
       await().until(isParagraphTerminated(p1));
       // Wait because paragraph is re submited
