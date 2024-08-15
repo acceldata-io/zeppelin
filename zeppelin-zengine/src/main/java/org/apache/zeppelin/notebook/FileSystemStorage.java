@@ -57,10 +57,9 @@ public class FileSystemStorage {
   // your ticket expired.
   static {
     if (UserGroupInformation.isSecurityEnabled()) {
-      String keytab = ZeppelinConfiguration.getStaticString(
-          ZeppelinConfiguration.ConfVars.ZEPPELIN_SERVER_KERBEROS_KEYTAB);
-      String principal = ZeppelinConfiguration.getStaticString(
-          ZeppelinConfiguration.ConfVars.ZEPPELIN_SERVER_KERBEROS_PRINCIPAL);
+      ZeppelinConfiguration conf = ZeppelinConfiguration.load();
+      String keytab = conf.getString(ZeppelinConfiguration.ConfVars.ZEPPELIN_SERVER_KERBEROS_KEYTAB);
+      String principal = conf.getString(ZeppelinConfiguration.ConfVars.ZEPPELIN_SERVER_KERBEROS_PRINCIPAL);
       if (StringUtils.isBlank(keytab) || StringUtils.isBlank(principal)) {
         throw new RuntimeException("keytab and principal can not be empty, keytab: " + keytab
             + ", principal: " + principal);
