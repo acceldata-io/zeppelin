@@ -87,7 +87,7 @@
     <dependency>
       <groupId>org.apache.zeppelin</groupId>
       <artifactId>zeppelin-jupyter-interpreter</artifactId>
-      <version>${project.version}</version>
+      <version>${zeppelin.jupyter.version}</version>
       <exclusions>
         <exclusion>
           <groupId>net.sf.py4j</groupId>
@@ -131,7 +131,7 @@
     <dependency>
       <groupId>org.apache.zeppelin</groupId>
       <artifactId>zeppelin-jupyter-interpreter</artifactId>
-      <version>${project.version}</version>
+      <version>${zeppelin.jupyter.version}</version>
       <classifier>tests</classifier>
       <scope>test</scope>
       <exclusions>

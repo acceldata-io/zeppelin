@@ -56,6 +56,7 @@
     <module>zeppelin-interpreter</module>
     <module>zeppelin-interpreter-shaded</module>
     <module>zeppelin-zengine</module>
+    <module>rlang</module>
     <module>python</module>
     <module>markdown</module>
     <module>spark</module>
@@ -87,6 +88,7 @@
     <scala.2.12.version>2.12.17</scala.2.12.version>
     <scalatest.version>3.2.15</scalatest.version>
     <scalacheck.version>1.17.0</scalacheck.version>
+    <zeppelin.jupyter.version>0.11.1</zeppelin.jupyter.version>
 
     <!-- frontend maven plugin related versions-->
     <node.version>v16.20.2</node.version>
