@@ -56,6 +56,7 @@
     <module>zeppelin-interpreter</module>
     <module>zeppelin-interpreter-shaded</module>
     <module>zeppelin-zengine</module>
+    <module>rlang</module>
     <module>python</module>
     <module>markdown</module>
     <module>spark</module>
