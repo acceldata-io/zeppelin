@@ -98,6 +98,9 @@ public class ZeppelinConfiguration {
     if (StringUtils.isBlank(filename)) {
       filename = ZEPPELIN_SITE_XML;
     }
+    if (!this.properties.isEmpty()) {
+      return;
+    }
     List<FileLocationStrategy> subs = Arrays.asList(
       new ZeppelinLocationStrategy(),
       new ClasspathLocationStrategy());

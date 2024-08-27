@@ -92,6 +92,7 @@ public class InterpreterOption {
   }
 
   public InterpreterOption() {
+    this.zConf = ZeppelinConfiguration.load();
   }
 
   public InterpreterOption(String perUser, String perNote) {
