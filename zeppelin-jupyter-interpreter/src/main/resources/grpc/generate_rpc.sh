@@ -14,5 +14,5 @@
 # limitations under the License.
 
 #!/usr/bin/env bash
-
+# TODO : Possibly needed refactoring for ambari-wrap
 python -m grpc_tools.protoc -I../../proto --python_out=jupyter --grpc_python_out=jupyter ../../proto/kernel.proto

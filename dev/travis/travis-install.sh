@@ -19,7 +19,7 @@ ZEPPELIN_SRC_ROOT_DIR=$1
 shift
 TRAVIS_SCRIPT_DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd ${ZEPPELIN_SRC_ROOT_DIR}
-
+# TODO : Possibly needed refactoring for ambari-wrap
 python ${TRAVIS_SCRIPT_DIR}/save-logs.py "install.txt" "$@"
 BUILD_RET_VAL=$?
 
