@@ -24,7 +24,7 @@
   <groupId>org.apache.zeppelin</groupId>
   <artifactId>zeppelin</artifactId>
   <packaging>pom</packaging>
-  <version>0.11.2.3.3.6.1-SNAPSHOT</version>
+  <version>0.11.2.3.3.6.1-1</version>
   <name>Zeppelin</name>
   <description>Zeppelin project</description>
   <url>https://zeppelin.apache.org</url>
@@ -49,16 +49,16 @@
     <developerConnection>scm:git:https://git-wip-us.apache.org/repos/asf/zeppelin.git</developerConnection>
   </scm>
 
-  <distributionManagement>
+	  <distributionManagement>
     <repository>
       <id>nexus-releases</id>
       <name>Releases</name>
-     <url>https://repo1.acceldata.dev/repository/odp-staging-release/</url>
+     <url>https://repo1.acceldata.dev/repository/odp-release/</url>
    </repository>
    <snapshotRepository>
      <id>nexus-snapshots</id>
      <name>Snapshot</name>
-     <url>https://repo1.acceldata.dev/repository/odp-staging-snapshot/</url>
+     <url>https://repo1.acceldata.dev/repository/odp-snapshot/</url>
    </snapshotRepository>
  </distributionManagement>
 
