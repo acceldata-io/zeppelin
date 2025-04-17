@@ -16,10 +16,12 @@
  */
 package org.apache.zeppelin.server;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
-import javax.ws.rs.core.Application;
+import jakarta.ws.rs.core.Application;
 
 import org.apache.zeppelin.rest.AdminRestApi;
 import org.apache.zeppelin.rest.ClusterRestApi;
@@ -34,6 +36,7 @@ import org.apache.zeppelin.rest.SecurityRestApi;
 import org.apache.zeppelin.rest.SessionRestApi;
 import org.apache.zeppelin.rest.ZeppelinRestApi;
 import org.apache.zeppelin.rest.exception.WebApplicationExceptionMapper;
+import org.glassfish.jersey.server.ServerProperties;
 
 public class RestApiApplication extends Application {
   @Override
@@ -57,5 +60,13 @@ public class RestApiApplication extends Application {
     // add JSON-Consumer and Producer
     s.add(GsonProvider.class);
     return s;
+  }
+
+  @Override
+  public Map<String, Object> getProperties() {
+    Map<String, Object> properties = new HashMap<>(super.getProperties());
+    // Disable WADL Feature
+    properties.put(ServerProperties.WADL_FEATURE_DISABLE, true);
+    return properties;
   }
 }
