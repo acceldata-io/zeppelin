@@ -23,13 +23,13 @@
   <parent>
     <artifactId>zeppelin-examples</artifactId>
     <groupId>org.apache.zeppelin</groupId>
-    <version>0.11.2.3.3.6.1-1</version>
+    <version>0.11.2.3.3.6.1-SNAPSHOT</version>
     <relativePath>..</relativePath>
   </parent>
 
   <artifactId>zeppelin-example-spell-echo</artifactId>
   <packaging>jar</packaging>
-  <version>0.11.2.3.3.6.1-1</version>
+  <version>0.11.2.3.3.6.1-SNAPSHOT</version>
   <name>Zeppelin: Example Spell - Echo</name>
 
   <dependencies>
@@ -44,7 +44,7 @@
       <artifactId>helium-dev</artifactId>
       <version>${project.version}</version>
     </dependency>
-    
+
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
@@ -59,7 +59,7 @@
       <groupId>ch.qos.reload4j</groupId>
       <artifactId>reload4j</artifactId>
     </dependency>
-    
+
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>

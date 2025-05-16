@@ -15,7 +15,7 @@
   ~ See the License for the specific language governing permissions and
   ~ limitations under the License.
   -->
-  
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
@@ -23,14 +23,14 @@
   <parent>
     <artifactId>zeppelin-interpreter-parent</artifactId>
     <groupId>org.apache.zeppelin</groupId>
-    <version>0.11.2.3.3.6.1-1</version>
+    <version>0.11.2.3.3.6.1-SNAPSHOT</version>
     <relativePath>../zeppelin-interpreter-parent/pom.xml</relativePath>
   </parent>
 
   <artifactId>zeppelin-neo4j</artifactId>
   <packaging>jar</packaging>
   <name>Zeppelin: Neo4j interpreter</name>
-  
+
   <properties>
   	<neo4j.driver.version>4.1.1</neo4j.driver.version>
   	<jackson.version>2.12.7.1</jackson.version>
