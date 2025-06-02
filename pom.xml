@@ -157,7 +157,9 @@
     <micrometer.version>1.6.0</micrometer.version>
     <findbugs.jsr305.version>3.0.2</findbugs.jsr305.version>
 
-    <hadoop.version>3.3.6.3.3.6.2-1</hadoop.version>
+    <hadoop3.2.version>3.2.4</hadoop3.2.version>
+    <hadoop3.3.version>3.3.6.3.3.6.2-1</hadoop3.3.version>
+    <hadoop.version>${hadoop3.3.version}</hadoop.version>
     <hadoop.deps.scope>provided</hadoop.deps.scope>
 
     <quartz.scheduler.version>2.3.2</quartz.scheduler.version>

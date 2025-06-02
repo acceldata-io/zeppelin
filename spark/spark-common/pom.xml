@@ -30,6 +30,10 @@
   <artifactId>spark-common</artifactId>
   <packaging>jar</packaging>
   <name>Zeppelin: Spark Common</name>
+  <properties>
+    <scala.binary.version>2.12</scala.binary.version>
+    <spark.version>3.5.5.3.3.6.2-1</spark.version>
+  </properties>
 
   <dependencies>
     <!--
