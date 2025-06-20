@@ -38,7 +38,7 @@
 
         <spark.archive>spark-${spark.version}</spark.archive>
         <spark.bin.download.url>
-            https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.2-100/${spark.archive}-bin-${hadoop.version}.tgz
+            http://88.99.99.178/standalone-3.3.6.2-100/${spark.archive}-bin-${hadoop.version}.tgz
         </spark.bin.download.url>
         <interpreter.jar.name>zeppelin-interpreter-r</interpreter.jar.name>
     </properties>
