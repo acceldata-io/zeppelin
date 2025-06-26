@@ -117,7 +117,8 @@
     <gson.version>2.8.9</gson.version>
     <gson-extras.version>0.2.2</gson-extras.version>
     <org-json.version>20240205</org-json.version>
-    <jetty.version>9.4.52.v20230823</jetty.version>
+    <jetty.version>9.4.57.v20241219</jetty.version>
+    <jackson.version>2.18.3</jackson.version>
     <httpcomponents.core.version>4.4.1</httpcomponents.core.version>
     <httpcomponents.client.version>4.5.13</httpcomponents.client.version>
     <httpcomponents.asyncclient.version>4.0.2</httpcomponents.asyncclient.version>
@@ -133,8 +134,8 @@
     <shiro.version>1.13.0</shiro.version>
     <bouncycastle.version>1.70</bouncycastle.version>
     <maven.version>3.6.3</maven.version>
-    <dropwizard.version>4.1.14</dropwizard.version>
-    <micrometer.version>1.6.0</micrometer.version>
+    <dropwizard.version>4.2.29</dropwizard.version>
+    <micrometer.version>1.14.2</micrometer.version>
     <findbugs.jsr305.version>3.0.2</findbugs.jsr305.version>
 
     <hadoop3.2.version>3.2.4</hadoop3.2.version>
