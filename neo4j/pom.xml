@@ -33,7 +33,11 @@
   
   <properties>
   	<neo4j.driver.version>4.1.1</neo4j.driver.version>
+<<<<<<< HEAD
   	<jackson.version>2.12.7.1</jackson.version>
+=======
+  	<jackson.version>2.16.1</jackson.version>
+>>>>>>> 74e53e741 (OSV-3511|PRISMA-2023-0067 -com.fasterxml.jackson.core_jackson-core to 2.16.1)
     <interpreter.name>neo4j</interpreter.name>
   </properties>
 
