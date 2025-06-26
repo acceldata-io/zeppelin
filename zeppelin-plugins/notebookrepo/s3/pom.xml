@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ~ Licensed to the Apache Software Foundation (ASF) under one or more
@@ -34,9 +35,9 @@
     <description>NotebookRepo implementation based on S3</description>
 
     <properties>
-        <aws.sdk.version>1.12.261</aws.sdk.version>
+        <aws.sdk.version>1.12.787</aws.sdk.version>
         <plugin.name>NotebookRepo/S3NotebookRepo</plugin.name>
-        <jackson.version>2.12.6</jackson.version>
+        <jackson.version>2.16.1</jackson.version>
     </properties>
 
     <dependencyManagement>
