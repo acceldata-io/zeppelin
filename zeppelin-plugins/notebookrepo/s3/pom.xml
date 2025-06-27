@@ -37,7 +37,6 @@
     <properties>
         <aws.sdk.version>1.12.261</aws.sdk.version>
         <plugin.name>NotebookRepo/S3NotebookRepo</plugin.name>
-        <jackson.version>2.16.1</jackson.version>
     </properties>
 
     <dependencyManagement>
