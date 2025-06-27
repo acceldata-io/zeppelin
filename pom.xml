@@ -197,7 +197,8 @@
     <plugin.source.version>3.2.1</plugin.source.version>
     <plugin.os.version>1.4.1.Final</plugin.os.version>
     <jinjava.version>2.6.0</jinjava.version>
-   <guava.version>32.0.1-jre</guava.version>
+    <guava.version>32.0.1-jre</guava.version>
+    <jackson.version>2.16.1</jackson.version>
     <testcontainers.version>1.19.0</testcontainers.version>
     <netty.codec.http2.version>4.1.119.Final</netty.codec.http2.version>
 
@@ -506,6 +507,16 @@
         <groupId>com.google.guava</groupId>
         <artifactId>guava</artifactId>
         <version>${guava.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-core</artifactId>
+        <version>${jackson.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
