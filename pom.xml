@@ -188,7 +188,7 @@
     <plugin.surefire.version>3.2.2</plugin.surefire.version>
     <plugin.os.version>1.4.1.Final</plugin.os.version>
     <jinjava.version>2.6.0</jinjava.version>
-
+   <guava.version>32.0.1-jre</guava.version>
     <testcontainers.version>1.19.0</testcontainers.version>
 
     <MaxMetaspace>512m</MaxMetaspace>
@@ -472,6 +472,11 @@
         <artifactId>hadoop-client-minicluster</artifactId>
         <version>${hadoop.version}</version>
         <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${guava.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
