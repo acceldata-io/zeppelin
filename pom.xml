@@ -187,6 +187,7 @@
     <plugin.source.version>3.2.1</plugin.source.version>
     <plugin.surefire.version>3.2.2</plugin.surefire.version>
     <plugin.os.version>1.4.1.Final</plugin.os.version>
+    <jinjava.version>2.6.0</jinjava.version>
 
     <testcontainers.version>1.19.0</testcontainers.version>
 
