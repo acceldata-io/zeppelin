@@ -197,7 +197,7 @@
     <plugin.source.version>3.2.1</plugin.source.version>
     <plugin.os.version>1.4.1.Final</plugin.os.version>
     <jinjava.version>2.6.0</jinjava.version>
-
+   <guava.version>32.0.1-jre</guava.version>
     <testcontainers.version>1.19.0</testcontainers.version>
     <netty.codec.http2.version>4.1.119.Final</netty.codec.http2.version>
 
@@ -503,9 +503,9 @@
         <scope>test</scope>
       </dependency>
       <dependency>
-        <groupId>io.netty</groupId>
-        <artifactId>netty-codec-http2</artifactId>
-        <version>${netty.codec.http2.version}</version>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>${guava.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
