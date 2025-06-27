@@ -36,7 +36,6 @@
     <properties>
         <plugin.name>Launcher/K8sStandardInterpreterLauncher</plugin.name>
         <kubernetes.client.version>5.12.4</kubernetes.client.version>
-        <jinjava.version>2.6.0</jinjava.version>
     </properties>
 
     <dependencies>
@@ -52,6 +51,24 @@
             <artifactId>jinjava</artifactId>
             <version>${jinjava.version}</version>
             <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.yaml</groupId>
+                    <artifactId>snakeyaml</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-annotations</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- Test libraries -->
         <dependency>
