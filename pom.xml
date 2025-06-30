@@ -198,6 +198,7 @@
     <plugin.os.version>1.4.1.Final</plugin.os.version>
 
     <testcontainers.version>1.19.0</testcontainers.version>
+    <netty.codec.http2.version>4.1.119.Final</netty.codec.http2.version>
 
     <MaxMetaspace>512m</MaxMetaspace>
 
@@ -499,6 +500,11 @@
         <artifactId>hadoop-client-minicluster</artifactId>
         <version>${hadoop.version}</version>
         <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>io.netty</groupId>
+        <artifactId>netty-codec-http2</artifactId>
+        <version>${netty.codec.http2.version}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
