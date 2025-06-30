@@ -34,11 +34,11 @@
 
     <properties>
         <interpreter.name>r</interpreter.name>
-        <spark.version>3.5.3</spark.version>
+        <spark.version>3.5.5.3.3.6.2-1</spark.version>
 
         <spark.archive>spark-${spark.version}</spark.archive>
         <spark.bin.download.url>
-            https://www.apache.org/dyn/closer.lua/spark/${spark.archive}/${spark.archive}-bin-without-hadoop.tgz?action=download
+            https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.2-1/${spark.archive}-bin-${hadoop.version}.tgz
         </spark.bin.download.url>
         <interpreter.jar.name>zeppelin-interpreter-r</interpreter.jar.name>
     </properties>

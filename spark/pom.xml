@@ -35,7 +35,7 @@
     <properties>
         <interpreter.name>spark</interpreter.name>
 
-        <spark.version>3.5.3</spark.version>
+        <spark.version>3.5.5.3.3.6.2-1</spark.version>
         <protobuf.version>3.21.12</protobuf.version>
         <py4j.version>0.10.9.7</py4j.version>
         <spark.scala.version>2.12.18</spark.scala.version>
@@ -45,10 +45,10 @@
 
         <spark.archive>spark-${spark.version}</spark.archive>
         <spark.src.download.url>
-            https://www.apache.org/dyn/closer.lua/spark/${spark.archive}/${spark.archive}.tgz?action=download
+            https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.2-1/${spark.archive}.tar.gz
         </spark.src.download.url>
         <spark.bin.download.url>
-            https://www.apache.org/dyn/closer.lua/spark/${spark.archive}/${spark.archive}-bin-without-hadoop.tgz?action=download
+            https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.2-1/${spark.archive}-bin-${hadoop.version}.tgz
         </spark.bin.download.url>
     </properties>
 
