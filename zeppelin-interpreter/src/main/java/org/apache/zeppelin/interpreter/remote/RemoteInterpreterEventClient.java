@@ -64,15 +64,16 @@ public class RemoteInterpreterEventClient implements ResourcePoolConnector,
   private String intpGroupId;
 
   public RemoteInterpreterEventClient(String intpEventHost, int intpEventPort, int connectionPoolSize) {
-    try {
-      TSocket transport = new TSocket(intpEventHost, intpEventPort);
-      transport.open();
-      TProtocol protocol = new TBinaryProtocol(transport);
-      return new RemoteInterpreterEventService.Client(protocol);
-    } catch (TTransportException e) {
-      throw new RuntimeException("Failed to open Thrift transport", e);
-    }
-  }, connectionPoolSize);
+    this.remoteClient = new PooledRemoteClient<>(() -> {
+      try {
+        TSocket transport = new TSocket(intpEventHost, intpEventPort);
+        transport.open();  // TTransportException may occur here
+        TProtocol protocol = new TBinaryProtocol(transport);
+        return new RemoteInterpreterEventService.Client(protocol);
+      } catch (TTransportException e) {
+        throw new RuntimeException("Failed to open Thrift transport", e);
+      }
+    }, connectionPoolSize);
   }
 
   public <R> R callRemoteFunction(PooledRemoteClient.RemoteFunction<R, RemoteInterpreterEventService.Client> func) {
