@@ -53,14 +53,14 @@ public abstract class RemoteInterpreterProcess implements InterpreterClient, Aut
     this.intpEventServerPort = intpEventServerPort;
     this.startTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
     this.remoteClient = new PooledRemoteClient<>(() -> {
-      TSocket transport = new TSocket(getHost(), getPort());
       try {
+        TSocket transport = new TSocket(getHost(), getPort());
         transport.open();
+        TProtocol protocol = new TBinaryProtocol(transport);
+        return new Client(protocol);
       } catch (TTransportException e) {
-        throw new IOException(e);
+        throw new RuntimeException("Failed to open Thrift transport", e);
       }
-      TProtocol protocol = new  TBinaryProtocol(transport);
-      return new Client(protocol);
     }, connectionPoolSize);
   }
 
