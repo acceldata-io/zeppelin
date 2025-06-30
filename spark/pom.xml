@@ -56,7 +56,7 @@
         <module>interpreter</module>
         <module>spark-scala-parent</module>
         <module>scala-2.12</module>
-<!--    <module>spark-common</module>-->
+        <module>spark-common</module>
         <!--<module>scala-2.13</module> -->
 <!--    <module>spark-shims</module>-->
 <!--    <module>spark3-shims</module>-->
