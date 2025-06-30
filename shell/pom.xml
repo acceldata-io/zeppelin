@@ -35,8 +35,8 @@
     <interpreter.name>sh</interpreter.name>
 
     <!--library versions -->
-    <pty4j.version>0.12.10-jdk8</pty4j.version>
-    <jinjava.version>2.4.0</jinjava.version>
+    <pty4j.version>0.12.25</pty4j.version>
+    <jinjava.version>2.6.0</jinjava.version>
     <guava.version>32.0.0-jre</guava.version>
   </properties>
 
