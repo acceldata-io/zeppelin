@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   ~ Licensed to the Apache Software Foundation (ASF) under one or more
@@ -36,6 +37,7 @@
     <properties>
         <aws.sdk.version>1.12.261</aws.sdk.version>
         <plugin.name>NotebookRepo/S3NotebookRepo</plugin.name>
+        <jackson.version>2.16.1</jackson.version>
     </properties>
 
     <dependencies>
@@ -48,6 +50,10 @@
                 <exclusion>
                     <groupId>commons-logging</groupId>
                     <artifactId>commons-logging</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-core</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
