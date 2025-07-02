@@ -40,6 +40,7 @@
     <jna.version>4.1.0</jna.version>
     <nimbus.version>9.37.2</nimbus.version>
     <kerberos.version>2.0.0-M24</kerberos.version>
+    <mina.version>2.0.27</mina.version>
 
     <!--test library versions-->
     <selenium.java.version>2.48.2</selenium.java.version>
@@ -284,6 +285,18 @@
       <groupId>org.apache.directory.server</groupId>
       <artifactId>apacheds-kerberos-codec</artifactId>
       <version>${kerberos.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.mina</groupId>
+          <artifactId>mina-core</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.mina</groupId>
+      <artifactId>mina-core</artifactId>
+      <version>${mina.version}</version>
     </dependency>
 
     <dependency>
