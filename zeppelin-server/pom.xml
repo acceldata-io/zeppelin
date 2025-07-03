@@ -39,7 +39,7 @@
     <libpam4j.version>1.11</libpam4j.version>
     <jna.version>4.1.0</jna.version>
     <nimbus.version>9.37.2</nimbus.version>
-    <kerberos.version>2.0.0-M24</kerberos.version>
+    <kerberos.version>2.0.0.AM26</kerberos.version>
     <mina.version>2.0.27</mina.version>
 
     <!--test library versions-->
@@ -291,6 +291,12 @@
           <artifactId>mina-core</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+      <version>2.6</version>
     </dependency>
 
     <dependency>
