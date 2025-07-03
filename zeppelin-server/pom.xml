@@ -43,7 +43,7 @@
     <mina.version>2.0.27</mina.version>
 
     <!--test library versions-->
-    <selenium.java.version>2.48.2</selenium.java.version>
+    <selenium.java.version>4.11.0</selenium.java.version>
     <xml.apis.version>1.4.01</xml.apis.version>
     <hamcrest.version>2.2</hamcrest.version>
   </properties>
