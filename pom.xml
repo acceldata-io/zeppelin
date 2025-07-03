@@ -136,6 +136,7 @@
     <dropwizard.version>4.2.29</dropwizard.version>
     <micrometer.version>1.14.2</micrometer.version>
     <findbugs.jsr305.version>3.0.2</findbugs.jsr305.version>
+    <project.oauth.version>1.35.0</project.oauth.version>
 
     <hadoop3.3.version>3.3.6.3.3.6.2-1</hadoop3.3.version>
     <hadoop.version>${hadoop3.3.version}</hadoop.version>
