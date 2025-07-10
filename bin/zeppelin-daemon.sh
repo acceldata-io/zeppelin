@@ -92,7 +92,10 @@ if [[ "${USE_HADOOP}" != "false"  ]]; then
     if ! [ -x "$(command -v hadoop)" ]; then
       echo 'hadoop command is not in PATH when HADOOP_CONF_DIR is specified.'
     else
-      ZEPPELIN_CLASSPATH+=":`hadoop classpath`"
+      # hadoop classpath does not work after [ZEPPELIN-6158] Update Jetty and other libraries to use Jakarta
+      # have to set relavent jars manually
+      #ZEPPELIN_CLASSPATH+=":`hadoop classpath`"
+      ZEPPELIN_CLASSPATH+=":/usr/odp/current/hadoop-client/*:/usr/odp/current/hadoop-client/client/shaded/*"
     fi
   fi
 fi
