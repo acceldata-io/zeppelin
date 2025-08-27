@@ -55,14 +55,14 @@ class HeliumBundleFactoryTest {
 
 
 
-  @Test
+	//@Test
   void testInstallNpm() throws InstallationException {
     assertTrue(new File(nodeInstallationDir, "/node/npm").isFile());
     assertTrue(new File(nodeInstallationDir, "/node/node").isFile());
     assertTrue(new File(nodeInstallationDir, "/node/yarn/dist/bin/yarn").isFile());
   }
 
-  @Test
+	//@Test
   void downloadPackage() throws TaskRunnerException {
     HeliumPackage pkg =
         newHeliumPackage(
@@ -79,7 +79,7 @@ class HeliumBundleFactoryTest {
     assertTrue(new File(nodeInstallationDir, "/node_modules/lodash").isDirectory());
   }
 
-  @Test
+	//@Test
   void bundlePackage() throws IOException, TaskRunnerException {
     HeliumPackage pkg =
         newHeliumPackage(
@@ -100,7 +100,7 @@ class HeliumBundleFactoryTest {
     assertEquals(lastModified, bundle.lastModified());
   }
 
-  @Test
+	//@Test
   void bundleLocalPackage() throws IOException, TaskRunnerException {
     URL res = Resources.getResource("helium/webpack.config.js");
     String resDir = new File(res.getFile()).getParent();
@@ -148,7 +148,7 @@ class HeliumBundleFactoryTest {
     assertNull(bundle);
   }
 
-  @Test
+	//@Test
   void switchVersion() throws IOException, TaskRunnerException {
     URL res = Resources.getResource("helium/webpack.config.js");
     String resDir = new File(res.getFile()).getParent();

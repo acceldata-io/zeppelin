@@ -126,7 +126,7 @@ class IPythonKernelTest {
     // multiple output
     context = getInterpreterContext();
     result = interpreter.interpret("print('hello world')\nprint('hello world2')", context);
-    Thread.sleep(100);
+    Thread.sleep(5000);
     assertEquals(InterpreterResult.Code.SUCCESS, result.code());
     interpreterResultMessages = context.out.toInterpreterResultMessage();
     assertEquals(1, interpreterResultMessages.size());

@@ -14,6 +14,7 @@
 
 import Visualization from '../visualization';
 import NetworkTransformation from '../../tabledata/network';
+import _ from 'lodash';
 
 /**
  * Visualize data in network format

@@ -13,6 +13,7 @@
  */
 
 import moment from 'moment';
+import _ from 'lodash';
 
 import {isParagraphRunning} from './paragraph/paragraph.status';
 

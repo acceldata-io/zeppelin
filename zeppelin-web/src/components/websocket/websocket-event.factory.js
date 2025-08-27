@@ -12,6 +12,8 @@
  * limitations under the License.
  */
 
+import _ from 'lodash';
+
 angular.module('zeppelinWebApp').factory('websocketEvents', WebsocketEventFactory);
 
 function WebsocketEventFactory($rootScope, $websocket, $location, baseUrlSrv, saveAsService, ngToast) {

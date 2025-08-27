@@ -279,7 +279,7 @@ class LuceneSearchTest {
         return null;
       });
     drainSearchEvents();
-    Thread.sleep(1000);
+    Thread.sleep(3000);
     // then
     assertTrue(resultForQuery("Notebook1").isEmpty());
     assertFalse(resultForQuery("NotebookN").isEmpty());

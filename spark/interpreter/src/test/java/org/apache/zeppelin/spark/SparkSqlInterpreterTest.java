@@ -290,6 +290,7 @@ public class SparkSqlInterpreterTest {
   @Test
   void testDDL() throws InterpreterException, IOException {
     InterpreterContext context = getInterpreterContext();
+	sqlInterpreter.interpret(("drop table if exists t1"), context);
     InterpreterResult ret = sqlInterpreter.interpret("create table t1(id int, name string)", context);
     assertEquals(InterpreterResult.Code.SUCCESS, ret.code(), context.out.toString());
     assertTrue(ret.message().isEmpty());

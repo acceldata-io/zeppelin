@@ -13,6 +13,7 @@
  */
 
 import {HeliumType} from './helium-type';
+import _ from 'lodash';
 
 export default function HeliumCtrl($scope, $rootScope, $sce,
                                    baseUrlSrv, ngToast, heliumService) {

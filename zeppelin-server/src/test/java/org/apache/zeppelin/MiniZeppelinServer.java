@@ -305,7 +305,7 @@ public class MiniZeppelinServer implements AutoCloseable {
       LOGGER.info("ZeppelinServerMock terminated.");
 
       if (deleteConfDir) {
-        FileUtils.deleteDirectory(confDir);
+		FileUtils.deleteQuietly(confDir);
       }
     }
   }

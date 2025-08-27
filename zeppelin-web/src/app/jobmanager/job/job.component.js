@@ -13,6 +13,7 @@
  */
 
 import moment from 'moment';
+import _ from 'lodash';
 
 import {ParagraphStatus} from '../../notebook/paragraph/paragraph.status';
 import {getJobColorByStatus, getJobIconByStatus} from '../job-status';
