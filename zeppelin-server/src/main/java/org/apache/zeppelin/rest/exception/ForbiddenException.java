@@ -16,10 +16,10 @@
  */
 package org.apache.zeppelin.rest.exception;
 
-import static jakarta.ws.rs.core.Response.Status.FORBIDDEN;
+import static javax.ws.rs.core.Response.Status.FORBIDDEN;
 
-import jakarta.ws.rs.WebApplicationException;
-import jakarta.ws.rs.core.Response;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 
 import org.apache.zeppelin.utils.ExceptionUtils;
 

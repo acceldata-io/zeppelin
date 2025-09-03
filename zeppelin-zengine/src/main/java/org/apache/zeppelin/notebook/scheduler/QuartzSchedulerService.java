@@ -19,7 +19,7 @@ package org.apache.zeppelin.notebook.scheduler;
 
 import java.io.IOException;
 import java.util.Map;
-import jakarta.inject.Inject;
+import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.zeppelin.conf.ZeppelinConfiguration;

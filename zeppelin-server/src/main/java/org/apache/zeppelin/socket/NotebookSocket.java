@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.Map;
 
-import jakarta.websocket.Session;
+import javax.websocket.Session;
 
 /**
  * Notebook websocket.

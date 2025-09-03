@@ -24,7 +24,7 @@ import com.google.gson.JsonSerializer;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 
 import java.lang.reflect.Type;
-import jakarta.ws.rs.WebApplicationException;
+import javax.ws.rs.WebApplicationException;
 
 public class ExceptionSerializer implements JsonSerializer<Exception> {
 

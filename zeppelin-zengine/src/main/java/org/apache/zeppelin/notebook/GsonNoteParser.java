@@ -19,7 +19,7 @@ package org.apache.zeppelin.notebook;
 
 import java.util.Date;
 
-import jakarta.inject.Inject;
+import javax.inject.Inject;
 
 import org.apache.zeppelin.conf.ZeppelinConfiguration;
 import org.apache.zeppelin.display.Input;

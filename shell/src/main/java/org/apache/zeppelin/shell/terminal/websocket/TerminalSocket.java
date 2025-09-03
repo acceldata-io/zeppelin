@@ -24,14 +24,14 @@ import org.apache.zeppelin.shell.terminal.service.TerminalService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import jakarta.websocket.ClientEndpoint;
-import jakarta.websocket.CloseReason;
-import jakarta.websocket.OnClose;
-import jakarta.websocket.OnError;
-import jakarta.websocket.OnMessage;
-import jakarta.websocket.OnOpen;
-import jakarta.websocket.Session;
-import jakarta.websocket.server.ServerEndpoint;
+import javax.websocket.ClientEndpoint;
+import javax.websocket.CloseReason;
+import javax.websocket.OnClose;
+import javax.websocket.OnError;
+import javax.websocket.OnMessage;
+import javax.websocket.OnOpen;
+import javax.websocket.Session;
+import javax.websocket.server.ServerEndpoint;
 import java.util.Map;
 
 @ClientEndpoint
@@ -41,8 +41,7 @@ public class TerminalSocket {
   private TerminalService terminalService;
   private TerminalManager terminalManager = TerminalManager.getInstance();
 
-  private String noteId;
-  private String paragraphId;
+  private String noteId, paragraphId;
 
   public TerminalSocket() {
     terminalService = terminalManager.addTerminalService(this);
@@ -50,14 +49,14 @@ public class TerminalSocket {
 
   @OnOpen
   public void onWebSocketConnect(Session sess) {
-    LOGGER.info("Socket Connected: {}", sess);
+    LOGGER.info("Socket Connected: " + sess);
     terminalService.onWebSocketConnect(sess);
   }
 
   @OnMessage
   public void onWebSocketText(String message) {
     if (LOGGER.isDebugEnabled()) {
-      LOGGER.debug("Received TEXT message: {}", message);
+      LOGGER.debug("Received TEXT message: " + message);
     }
 
     Map<String, String> messageMap = getMessageMap(message);
@@ -78,14 +77,14 @@ public class TerminalSocket {
           terminalService.onTerminalResize(messageMap.get("columns"), messageMap.get("rows"));
           break;
         default:
-          LOGGER.error("Unrecodnized action: {}", message);
+          LOGGER.error("Unrecodnized action: " + message);
       }
     }
   }
 
   @OnClose
   public void onWebSocketClose(CloseReason reason) {
-    LOGGER.info("Socket Closed: {}", reason);
+    LOGGER.info("Socket Closed: " + reason);
 
     terminalManager.onWebSocketClose(this, noteId, paragraphId);
   }

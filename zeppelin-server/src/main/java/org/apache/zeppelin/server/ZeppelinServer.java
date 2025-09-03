@@ -16,8 +16,8 @@
  */
 package org.apache.zeppelin.server;
 
-import io.dropwizard.metrics.servlets.HealthCheckServlet;
-import io.dropwizard.metrics.servlets.PingServlet;
+import com.codahale.metrics.servlets.HealthCheckServlet;
+import com.codahale.metrics.servlets.PingServlet;
 import com.google.gson.Gson;
 
 import io.micrometer.core.instrument.Clock;
@@ -26,17 +26,17 @@ import io.micrometer.core.instrument.Tags;
 import io.micrometer.core.instrument.binder.jetty.InstrumentedQueuedThreadPool;
 import io.micrometer.core.instrument.binder.jetty.JettyConnectionMetrics;
 import io.micrometer.core.instrument.binder.jetty.JettySslHandshakeMetrics;
+import io.micrometer.core.instrument.binder.jetty.TimedHandler;
 import io.micrometer.core.instrument.binder.jvm.ClassLoaderMetrics;
 import io.micrometer.core.instrument.binder.jvm.JvmMemoryMetrics;
 import io.micrometer.core.instrument.binder.jvm.JvmThreadMetrics;
 import io.micrometer.core.instrument.binder.system.FileDescriptorMetrics;
 import io.micrometer.core.instrument.binder.system.ProcessorMetrics;
 import io.micrometer.core.instrument.binder.system.UptimeMetrics;
-import io.micrometer.jetty11.TimedHandler;
 import io.micrometer.jmx.JmxConfig;
 import io.micrometer.jmx.JmxMeterRegistry;
-import io.micrometer.prometheusmetrics.PrometheusConfig;
-import io.micrometer.prometheusmetrics.PrometheusMeterRegistry;
+import io.micrometer.prometheus.PrometheusConfig;
+import io.micrometer.prometheus.PrometheusMeterRegistry;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,12 +50,12 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.EnumSet;
-import jakarta.inject.Singleton;
+import javax.inject.Singleton;
 import javax.management.remote.JMXServiceURL;
-import jakarta.servlet.DispatcherType;
-import jakarta.servlet.ServletContextEvent;
-import jakarta.servlet.ServletContextListener;
-import jakarta.websocket.server.ServerEndpointConfig;
+import javax.servlet.DispatcherType;
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
+import javax.websocket.server.ServerEndpointConfig;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.web.env.EnvironmentLoaderListener;
@@ -115,7 +115,8 @@ import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.eclipse.jetty.webapp.WebAppContext;
-import org.eclipse.jetty.websocket.jakarta.server.config.JakartaWebSocketServletContainerInitializer;
+import org.eclipse.jetty.websocket.jsr356.server.deploy.WebSocketServerContainerInitializer;
+import org.eclipse.jetty.websocket.servlet.WebSocketServlet;
 import org.glassfish.hk2.api.ServiceLocator;
 import org.glassfish.hk2.api.ServiceLocatorFactory;
 import org.glassfish.hk2.utilities.ServiceLocatorUtilities;
@@ -206,6 +207,7 @@ public class ZeppelinServer implements AutoCloseable {
                 .to(RemoteInterpreterProcessListener.class)
                 .to(ApplicationEventListener.class)
                 .to(NoteEventListener.class)
+                .to(WebSocketServlet.class)
                 .in(Singleton.class);
             if (zConf.isZeppelinNotebookCronEnable()) {
               bind(QuartzSchedulerService.class).to(SchedulerService.class).in(Singleton.class);
@@ -268,10 +270,6 @@ public class ZeppelinServer implements AutoCloseable {
     notebook.recoveryIfNecessary();
 
     LOGGER.info("Starting zeppelin server");
-    /*
-     * Get a nice Dump after jetty start, quite helpful for debugging
-     * jettyWebServer.setDumpAfterStart(true);
-     */
     try {
       jettyWebServer.start(); // Instantiates ZeppelinServer
       if (zConf.getJettyName() != null) {
@@ -477,7 +475,7 @@ public class ZeppelinServer implements AutoCloseable {
 
   private void setupNotebookServer(WebAppContext webapp) {
     String maxTextMessageSize = zConf.getWebsocketMaxTextMessageSize();
-    JakartaWebSocketServletContainerInitializer
+    WebSocketServerContainerInitializer
             .configure(webapp, (servletContext, wsContainer) -> {
               wsContainer.setDefaultMaxTextMessageBufferSize(Integer.parseInt(maxTextMessageSize));
               wsContainer.addEndpoint(ServerEndpointConfig.Builder.create(NotebookServer.class, "/ws")
@@ -485,7 +483,7 @@ public class ZeppelinServer implements AutoCloseable {
             });
   }
 
-  private static SslContextFactory.Server getSslContextFactory(ZeppelinConfiguration zConf) {
+  private static SslContextFactory getSslContextFactory(ZeppelinConfiguration zConf) {
     SslContextFactory.Server sslContextFactory = new SslContextFactory.Server();
 
     // initialize KeyStore
@@ -561,7 +559,7 @@ public class ZeppelinServer implements AutoCloseable {
     final ServletHolder servletHolder =
         new ServletHolder(new org.glassfish.jersey.servlet.ServletContainer());
 
-    servletHolder.setInitParameter("jakarta.ws.rs.Application", RestApiApplication.class.getName());
+    servletHolder.setInitParameter("javax.ws.rs.Application", RestApiApplication.class.getName());
     servletHolder.setName("rest");
     webapp.addServlet(servletHolder, "/api/*");
 

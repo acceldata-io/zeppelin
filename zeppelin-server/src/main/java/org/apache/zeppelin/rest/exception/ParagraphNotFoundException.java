@@ -19,9 +19,9 @@ package org.apache.zeppelin.rest.exception;
 
 import org.apache.zeppelin.utils.ExceptionUtils;
 
-import jakarta.ws.rs.WebApplicationException;
+import javax.ws.rs.WebApplicationException;
 
-import static jakarta.ws.rs.core.Response.Status.NOT_FOUND;
+import static javax.ws.rs.core.Response.Status.NOT_FOUND;
 
 public class ParagraphNotFoundException extends WebApplicationException {
 
