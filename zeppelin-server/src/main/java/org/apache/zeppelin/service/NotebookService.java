@@ -1571,7 +1571,7 @@ public class NotebookService {
     int attempts = 0;
 
     while (attempts < maxDecodeAttempts) {
-      String decoded = URLDecoder.decode(previous, StandardCharsets.UTF_8);
+      String decoded = URLDecoder.decode(previous, "UTF-8");
       attempts++;
       if (decoded.equals(previous)) {
         return decoded;

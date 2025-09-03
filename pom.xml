@@ -91,7 +91,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!-- language versions -->
-    <java.version>11</java.version>
+    <java.version>1.8</java.version>
     <!-- These two lines could be changed like `maven.compiler.release` after updating JDK11 -->
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -111,12 +111,12 @@
     <reload4j.version>1.2.25</reload4j.version>
     <log4j2.version>2.23.1</log4j2.version>
     <libthrift.version>0.16.0</libthrift.version>
-    <flexmark.all.version>0.64.8</flexmark.all.version>
+    <flexmark.all.version>0.62.2</flexmark.all.version>
     <gson.version>2.8.9</gson.version>
     <gson-extras.version>0.2.2</gson-extras.version>
     <org-json.version>20240205</org-json.version>
     <jackson.version>2.12.7.20240502</jackson.version>
-    <jetty.version>9.4.57.v20241219</jetty.version>
+    <jetty.version>9.4.58.v20250814</jetty.version>
     <jakarta.activation.version>1.2.2</jakarta.activation.version>
     <jakarta.xml.bind.version>2.3.3</jakarta.xml.bind.version>
     <httpcomponents.core.version>4.4.1</httpcomponents.core.version>

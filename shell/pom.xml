@@ -35,7 +35,7 @@
     <interpreter.name>sh</interpreter.name>
 
     <!--library versions -->
-    <pty4j.version>0.12.25</pty4j.version>
+    <pty4j.version>0.12.10-jdk8</pty4j.version>
   </properties>
 
   <!-- pty4j library not in maven central repository (http://repo.maven.apache.org/maven2) -->
