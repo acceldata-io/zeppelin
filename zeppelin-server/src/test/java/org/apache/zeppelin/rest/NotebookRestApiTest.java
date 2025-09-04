@@ -541,7 +541,7 @@ class NotebookRestApiTest extends AbstractTestRestApi {
   @Test
   void testCreateNote() throws Exception {
     LOGGER.info("Running testCreateNote");
-    String message1 = "{\n\t\"name\" : \"test1\",\n\t\"addingEmptyParagraph\" : true\n}";
+    String message1 = "{\n\t\"notePath\" : \"test1\",\n\t\"addingEmptyParagraph\" : true\n}";
     CloseableHttpResponse post1 = httpPost("/notebook/", message1);
     assertThat(post1, isAllowed());
 
@@ -553,6 +553,7 @@ class NotebookRestApiTest extends AbstractTestRestApi {
     notebook.processNote(note1Id,
       note1 -> {
         assertEquals("test1", note1.getName());
+        assertEquals("/test1", note1.getPath());
         assertEquals(1, note1.getParagraphCount());
         assertNull(note1.getParagraph(0).getText());
         assertNull(note1.getParagraph(0).getTitle());
@@ -560,7 +561,7 @@ class NotebookRestApiTest extends AbstractTestRestApi {
       });
 
 
-    String message2 = "{\n\t\"name\" : \"test2\"\n}";
+    String message2 = "{\n\t\"notePath\" : \"test2\"\n}";
     CloseableHttpResponse post2 = httpPost("/notebook/", message2);
     assertThat(post2, isAllowed());
 
@@ -574,6 +575,7 @@ class NotebookRestApiTest extends AbstractTestRestApi {
         return note;
       });
     assertEquals("test2", note2.getName());
+    assertEquals("/test2", note2.getPath());
     assertEquals(0, note2.getParagraphCount());
   }
 
