@@ -23,7 +23,7 @@
     <parent>
         <artifactId>zeppelin-interpreter-parent</artifactId>
         <groupId>org.apache.zeppelin</groupId>
-        <version>0.12.0.3.3.6.2-SNAPSHOT</version>
+        <version>0.12.0.3.3.6.3-1</version>
         <relativePath>../zeppelin-interpreter-parent/pom.xml</relativePath>
     </parent>
 
@@ -34,11 +34,11 @@
 
     <properties>
         <interpreter.name>r</interpreter.name>
-        <spark.version>3.5.5.3.3.6.2-SNAPSHOT</spark.version>
+        <spark.version>3.5.5.3.3.6.3-1</spark.version>
 
         <spark.archive>spark-${spark.version}</spark.archive>
         <spark.bin.download.url>
-            https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.2-SNAPSHOT/${spark.archive}-bin-${hadoop.version}.tgz
+            https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.3-1/${spark.archive}-bin-${hadoop.version}.tgz
         </spark.bin.download.url>
         <interpreter.jar.name>zeppelin-interpreter-r</interpreter.jar.name>
     </properties>

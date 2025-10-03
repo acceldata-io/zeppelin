@@ -24,7 +24,7 @@
   <groupId>org.apache.zeppelin</groupId>
   <artifactId>zeppelin</artifactId>
   <packaging>pom</packaging>
-  <version>0.12.0.3.3.6.2-SNAPSHOT</version>
+  <version>0.12.0.3.3.6.3-1</version>
   <name>Zeppelin</name>
   <description>Zeppelin project</description>
   <url>https://zeppelin.apache.org</url>
@@ -138,7 +138,7 @@
     <findbugs.jsr305.version>3.0.2</findbugs.jsr305.version>
     <project.oauth.version>1.35.0</project.oauth.version>
 
-    <hadoop3.3.version>3.3.6.3.3.6.2-SNAPSHOT</hadoop3.3.version>
+    <hadoop3.3.version>3.3.6.3.3.6.3-1</hadoop3.3.version>
     <hadoop.version>${hadoop3.3.version}</hadoop.version>
     <hadoop.deps.scope>provided</hadoop.deps.scope>
 
