@@ -23,13 +23,13 @@
   <parent>
     <artifactId>zeppelin-examples</artifactId>
     <groupId>org.apache.zeppelin</groupId>
-    <version>0.11.2.3.3.6.0-101</version>
+    <version>0.11.2.3.3.6.0-102</version>
     <relativePath>..</relativePath>
   </parent>
 
   <artifactId>zeppelin-example-horizontalbar</artifactId>
   <packaging>jar</packaging>
-  <version>0.11.2.3.3.6.0-101</version>
+  <version>0.11.2.3.3.6.0-102</version>
   <name>Zeppelin: Example application - Horizontal Bar chart</name>
 
   <dependencies>
