@@ -17,7 +17,7 @@ FROM ubuntu:20.04
 
 LABEL maintainer="Apache Software Foundation <dev@zeppelin.apache.org>"
 
-ENV Z_VERSION="0.11.2.3.3.6.1-1"
+ENV Z_VERSION="0.11.2.3.3.6.1-101"
 
 ENV LOG_TAG="[ZEPPELIN_${Z_VERSION}]:" \
     ZEPPELIN_HOME="/opt/zeppelin" \
