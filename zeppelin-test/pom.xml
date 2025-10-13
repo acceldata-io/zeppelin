@@ -21,7 +21,7 @@
   <parent>
     <groupId>org.apache.zeppelin</groupId>
     <artifactId>zeppelin</artifactId>
-    <version>0.12.0.3.2.3.4-2001</version>
+    <version>0.12.0.3.2.3.4-2002</version>
   </parent>
   <artifactId>zeppelin-test</artifactId>
   <name>Zeppelin: Test</name>
