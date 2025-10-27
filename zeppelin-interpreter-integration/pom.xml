@@ -23,11 +23,11 @@
   <parent>
     <artifactId>zeppelin</artifactId>
     <groupId>org.apache.zeppelin</groupId>
-    <version>0.12.0.3.2.3.4-2002</version>
+    <version>0.12.0.3.2.3.4-2003</version>
   </parent>
 
   <artifactId>zeppelin-interpreter-integration</artifactId>
-  <version>0.12.0.3.2.3.4-2002</version>
+  <version>0.12.0.3.2.3.4-2003</version>
   <packaging>jar</packaging>
   <name>Zeppelin: Interpreter Integration Test</name>
 
