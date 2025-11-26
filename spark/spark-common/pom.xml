@@ -22,7 +22,7 @@
   <parent>
     <artifactId>spark-parent</artifactId>
     <groupId>org.apache.zeppelin</groupId>
-    <version>0.12.0.3.2.3.4-2</version>
+    <version>0.12.0.3.2.3.5-2</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
@@ -32,7 +32,7 @@
   <name>Zeppelin: Spark Common</name>
   <properties>
     <scala.binary.version>2.12</scala.binary.version>
-    <spark.version>3.5.5.3.2.3.4-2</spark.version>
+    <spark.version>3.5.5.3.2.3.5-2</spark.version>
   </properties>
 
   <dependencies>
