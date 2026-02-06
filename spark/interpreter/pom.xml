@@ -1,0 +1,617 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one or more
+  ~ contributor license agreements.  See the NOTICE file distributed with
+  ~ this work for additional information regarding copyright ownership.
+  ~ The ASF licenses this file to You under the Apache License, Version 2.0
+  ~ (the "License"); you may not use this file except in compliance with
+  ~ the License.  You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <artifactId>spark-parent</artifactId>
+    <groupId>org.apache.zeppelin</groupId>
+    <version>0.12.0.3.3.6.3-101</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <artifactId>spark-interpreter</artifactId>
+  <packaging>jar</packaging>
+  <name>Zeppelin: Spark Interpreter</name>
+  <description>Zeppelin spark support</description>
+
+  <properties>
+    <!--library versions-->
+    <maven.plugin.api.version>3.0</maven.plugin.api.version>
+    <aether.version>1.12</aether.version>
+    <maven.aeither.provider.version>3.0.3</maven.aeither.provider.version>
+    <wagon.version>2.7</wagon.version>
+
+    <!-- spark versions -->
+    <spark.version>3.5.5.3.3.6.3-101</spark.version>
+    <protobuf.version>3.21.12</protobuf.version>
+    <py4j.version>0.10.9.7</py4j.version>
+    <spark.scala.version>2.12.18</spark.scala.version>
+    <spark.scala.binary.version>2.12</spark.scala.binary.version>
+
+    <spark.archive>spark-${spark.version}</spark.archive>
+    <spark.src.download.url>
+      https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.3-101/${spark.archive}.tar.gz
+    </spark.src.download.url>
+    <spark.bin.download.url>
+      https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.3-101/${spark.archive}-bin-${hadoop.version}.tgz
+    </spark.bin.download.url>
+
+    <scala.compile.version>${spark.scala.version}</scala.compile.version>
+    <!-- settings -->
+    <pyspark.test.exclude>**/PySparkInterpreterMatplotlibTest.java</pyspark.test.exclude>
+    <pyspark.test.include>**/*Test.*</pyspark.test.include>
+
+    <extraJavaTestArgs></extraJavaTestArgs>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.zeppelin</groupId>
+      <artifactId>spark-common</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.zeppelin</groupId>
+      <artifactId>zeppelin-python</artifactId>
+      <version>${project.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>net.sf.py4j</groupId>
+          <artifactId>py4j</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.zeppelin</groupId>
+      <artifactId>zeppelin-jupyter-interpreter</artifactId>
+      <version>${project.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>net.sf.py4j</groupId>
+          <artifactId>py4j</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>zeppelin-python</artifactId>
+      <version>${project.version}</version>
+      <classifier>tests</classifier>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>net.sf.py4j</groupId>
+          <artifactId>py4j</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>io.netty</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.zeppelin</groupId>
+      <artifactId>r</artifactId>
+      <version>${project.version}</version>
+      <classifier>tests</classifier>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.apache.spark</groupId>
+          <artifactId>spark-core_2.12</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.zeppelin</groupId>
+      <artifactId>zeppelin-jupyter-interpreter</artifactId>
+      <version>${project.version}</version>
+      <classifier>tests</classifier>
+      <scope>test</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>net.sf.py4j</groupId>
+          <artifactId>py4j</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>r</artifactId>
+      <version>${project.version}</version>
+      <exclusions>
+        <exclusion>
+          <groupId>*</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-repl_${spark.scala.binary.version}</artifactId>
+      <version>${spark.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-core_${spark.scala.binary.version}</artifactId>
+      <version>${spark.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-hive_${spark.scala.binary.version}</artifactId>
+      <version>${spark.version}</version>
+      <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.codehaus.jackson</groupId>
+          <artifactId>jackson-mapper-asl</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-exec</artifactId>
+      <version>${commons.exec.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+      <version>${spark.scala.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-compiler</artifactId>
+      <version>${spark.scala.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-reflect</artifactId>
+      <version>${spark.scala.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-compress</artifactId>
+      <version>${commons.compress.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <version>${jsoup.version}</version>
+    </dependency>
+
+    <!--test libraries-->
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>net.jodah</groupId>
+      <artifactId>concurrentunit</artifactId>
+      <version>0.4.4</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.mashape.unirest</groupId>
+      <artifactId>unirest-java</artifactId>
+      <version>1.4.9</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-params</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.scalatest</groupId>
+      <artifactId>scalatest_${spark.scala.binary.version}</artifactId>
+      <version>${scalatest.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.scalacheck</groupId>
+      <artifactId>scalacheck_${spark.scala.binary.version}</artifactId>
+      <version>${scalacheck.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <plugin>
+        <groupId>com.googlecode.maven-download-plugin</groupId>
+        <artifactId>download-maven-plugin</artifactId>
+        <executions>
+          <!-- include pyspark by default -->
+          <execution>
+            <id>download-pyspark-files</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>wget</goal>
+            </goals>
+            <configuration>
+              <readTimeOut>60000</readTimeOut>
+              <retries>5</retries>
+              <unpack>true</unpack>
+              <url>${spark.src.download.url}</url>
+              <outputDirectory>${project.build.directory}</outputDirectory>
+              <outputFileName>${spark.archive}.tgz</outputFileName>
+            </configuration>
+          </execution>
+          <!-- include sparkr by default -->
+          <execution>
+            <id>download-sparkr-files</id>
+            <phase>validate</phase>
+            <goals>
+              <goal>wget</goal>
+            </goals>
+            <configuration>
+              <readTimeOut>60000</readTimeOut>
+              <retries>5</retries>
+              <url>${spark.bin.download.url}</url>
+              <unpack>true</unpack>
+              <outputDirectory>${project.build.directory}</outputDirectory>
+              <outputFileName>${spark.archive}-bin-without-hadoop.tgz</outputFileName>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>zip-pyspark-files</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <target>
+                <delete dir="../../interpreter/spark/pyspark" />
+                <copy file="${project.build.directory}/${spark.archive}/python/lib/py4j-${py4j.version}-src.zip" todir="${project.build.directory}/../../../interpreter/spark/pyspark" />
+                <zip basedir="${project.build.directory}/${spark.archive}/python" destfile="${project.build.directory}/../../../interpreter/spark/pyspark/pyspark.zip" includes="pyspark/" />
+              </target>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-resources-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-sparkr-files</id>
+            <phase>generate-resources</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/../../../interpreter/spark/R/lib</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>
+                    ${project.build.directory}/spark-${spark.version}-bin-without-hadoop/R/lib
+                  </directory>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-interpreter-setting</id>
+            <phase>package</phase>
+            <goals>
+              <goal>resources</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/../../../interpreter/${interpreter.name}</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <configuration>
+          <forkCount>1</forkCount>
+          <reuseForks>false</reuseForks>
+          <argLine>-Xmx3072m -XX:MaxMetaspaceSize=256m ${extraJavaTestArgs}</argLine>
+          <excludes>
+            <exclude>${pyspark.test.exclude}</exclude>
+            <exclude>${tests.to.exclude}</exclude>
+          </excludes>
+          <environmentVariables>
+            <PYTHONPATH>${project.build.directory}/../../../interpreter/spark/pyspark/pyspark.zip:${project.build.directory}/../../../interpreter/spark/pyspark/py4j-${py4j.version}-src.zip</PYTHONPATH>
+            <ZEPPELIN_HOME>${basedir}/../../</ZEPPELIN_HOME>
+          </environmentVariables>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <configuration>
+          <filters>
+            <filter>
+              <artifact>*:*</artifact>
+              <excludes>
+                <exclude>org/datanucleus/**</exclude>
+                <exclude>META-INF/*.SF</exclude>
+                <exclude>META-INF/*.DSA</exclude>
+                <exclude>META-INF/*.RSA</exclude>
+              </excludes>
+            </filter>
+          </filters>
+
+          <artifactSet>
+            <excludes>
+              <exclude>org.scala-lang:scala-library</exclude>
+              <exclude>org.scala-lang:scala-compiler</exclude>
+              <exclude>org.scala-lang:scala-reflect</exclude>
+              <exclude>commons-lang:commons-lang</exclude>
+              <exclude>org.apache.commons:commons-compress</exclude>
+              <exclude>org.apache.zeppelin:zeppelin-interpreter-shaded</exclude>
+            </excludes>
+          </artifactSet>
+
+          <transformers>
+            <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+            <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+              <resource>reference.conf</resource>
+            </transformer>
+          </transformers>
+          <relocations>
+            <relocation>
+              <pattern>io.netty</pattern>
+              <shadedPattern>org.apache.zeppelin.io.netty</shadedPattern>
+            </relocation>
+            <relocation>
+              <pattern>com.google</pattern>
+              <shadedPattern>org.apache.zeppelin.com.google</shadedPattern>
+            </relocation>
+            <relocation>
+              <pattern>com.facebook.fb303</pattern>
+              <shadedPattern>org.apache.zeppelin.com.facebook.fb303</shadedPattern>
+            </relocation>
+          </relocations>
+          <outputFile>${project.basedir}/../../interpreter/${interpreter.name}/${project.artifactId}-${project.version}.jar</outputFile>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>integration-test</goal>
+              <goal>verify</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <argLine>-Xmx2048m</argLine>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>net.alchim31.maven</groupId>
+        <artifactId>scala-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>eclipse-add-source</id>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>scala-compile-first</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>scala-test-compile-first</id>
+            <phase>process-test-resources</phase>
+            <goals>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <scalaVersion>${spark.scala.version}</scalaVersion>
+          <args>
+            <arg>-unchecked</arg>
+            <arg>-deprecation</arg>
+            <arg>-feature</arg>
+            <arg>-nobootcp</arg>
+          </args>
+          <jvmArgs>
+            <jvmArg>-Xms1024m</jvmArg>
+            <jvmArg>-Xmx1024m</jvmArg>
+            <jvmArg>-XX:MaxMetaspaceSize=${MaxMetaspace}</jvmArg>
+          </jvmArgs>
+          <javacArgs>
+            <javacArg>-source</javacArg>
+            <javacArg>${java.version}</javacArg>
+            <javacArg>-target</javacArg>
+            <javacArg>${java.version}</javacArg>
+            <javacArg>-Xlint:all,-serial,-path,-options</javacArg>
+          </javacArgs>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.scalatest</groupId>
+        <artifactId>scalatest-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>test</id>
+            <goals>
+              <goal>test</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+
+    <outputDirectory>target/scala-${spark.scala.binary.version}/classes</outputDirectory>
+    <testOutputDirectory>target/scala-${spark.scala.binary.version}/test-classes</testOutputDirectory>
+  </build>
+
+  <profiles>
+
+    <profile>
+      <id>java-17</id>
+      <activation>
+        <jdk>[17,)</jdk>
+      </activation>
+      <properties>
+        <extraJavaTestArgs>
+          -XX:+IgnoreUnrecognizedVMOptions
+          --add-modules=jdk.incubator.vector
+          --add-opens=java.base/java.lang=ALL-UNNAMED
+          --add-opens=java.base/java.lang.invoke=ALL-UNNAMED
+          --add-opens=java.base/java.lang.reflect=ALL-UNNAMED
+          --add-opens=java.base/java.io=ALL-UNNAMED
+          --add-opens=java.base/java.net=ALL-UNNAMED
+          --add-opens=java.base/java.nio=ALL-UNNAMED
+          --add-opens=java.base/java.util=ALL-UNNAMED
+          --add-opens=java.base/java.util.concurrent=ALL-UNNAMED
+          --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED
+          --add-opens=java.base/jdk.internal.ref=ALL-UNNAMED
+          --add-opens=java.base/sun.nio.ch=ALL-UNNAMED
+          --add-opens=java.base/sun.nio.cs=ALL-UNNAMED
+          --add-opens=java.base/sun.security.action=ALL-UNNAMED
+          --add-opens=java.base/sun.util.calendar=ALL-UNNAMED
+          -Djdk.reflect.useDirectMethodHandle=false
+          -Dio.netty.tryReflectionSetAccessible=true
+        </extraJavaTestArgs>
+      </properties>
+    </profile>
+
+    <!-- profile spark-scala-x only affect the unit test in spark/interpreter module -->
+
+    <profile>
+      <id>spark-scala-2.13</id>
+      <properties>
+        <spark.scala.version>2.13.8</spark.scala.version>
+        <spark.scala.binary.version>2.13</spark.scala.binary.version>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>spark-scala-2.12</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <spark.scala.version>2.12.18</spark.scala.version>
+        <spark.scala.binary.version>2.12</spark.scala.binary.version>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>spark-4.0</id>
+      <properties>
+        <spark.version>4.0.0-preview2</spark.version>
+        <protobuf.version>3.21.12</protobuf.version>
+        <py4j.version>0.10.9.7</py4j.version>
+        <libthrift.version>0.16.0</libthrift.version>
+      </properties>
+    </profile>
+
+    <!-- profile spark-x only affect spark version used in test -->
+    <profile>
+      <id>spark-3.5</id>
+      <properties>
+        <spark.version>3.5.5.3.3.6.3-101</spark.version>
+        <protobuf.version>3.21.12</protobuf.version>
+        <py4j.version>0.10.9.7</py4j.version>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>spark-3.4</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <spark.version>3.4.3</spark.version>
+        <protobuf.version>3.21.12</protobuf.version>
+        <py4j.version>0.10.9.7</py4j.version>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>spark-3.3</id>
+      <properties>
+        <spark.version>3.3.4</spark.version>
+        <protobuf.version>2.5.0</protobuf.version>
+        <py4j.version>0.10.9.5</py4j.version>
+      </properties>
+    </profile>
+  </profiles>
+
+</project>

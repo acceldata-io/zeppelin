@@ -1,0 +1,24 @@
+name: python_3
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - pycodestyle
+  - numpy=1.19.5
+  - pandas=1.4.4
+  - scipy
+  - grpcio
+  - hvplot
+  - protobuf
+  - pandasql
+  - ipython
+  - matplotlib
+  - ipykernel
+  - jupyter_client=5
+  - bokeh=2.4
+  - panel=0.6.0
+  - holoviews=1.16
+  - jinja2=3.0.3
+  - pip
+  - pip:
+    - bkzep==0.6.1
