@@ -233,6 +233,16 @@
           <groupId>org.apache.phoenix</groupId>
           <artifactId>phoenix-core</artifactId>
           <version>${phoenix.version}</version>
+          <exclusions>
+            <exclusion>
+              <groupId>org.apache.htrace</groupId>
+              <artifactId>htrace-core4</artifactId>
+            </exclusion>
+            <exclusion>
+              <groupId>org.apache.htrace</groupId>
+              <artifactId>htrace-core</artifactId>
+            </exclusion>
+          </exclusions>
         </dependency>
 
         <dependency>
@@ -298,6 +308,14 @@
             <exclusion>
               <groupId>com.jcraft</groupId>
               <artifactId>jsch</artifactId>
+            </exclusion>
+            <exclusion>
+              <groupId>org.apache.htrace</groupId>
+              <artifactId>htrace-core4</artifactId>
+            </exclusion>
+            <exclusion>
+              <groupId>org.apache.htrace</groupId>
+              <artifactId>htrace-core</artifactId>
             </exclusion>
           </exclusions>
         </dependency>
