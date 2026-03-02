@@ -782,8 +782,6 @@ public class InterpreterSetting {
         return "FlinkInterpreterLauncher";
       }
       return "K8sStandardInterpreterLauncher";
-    } else if (isRunningOnDocker()) {
-      return "DockerInterpreterLauncher";
     } else {
       String launcher = properties.getProperty("zeppelin.interpreter.launcher");
       LOGGER.debug("zeppelin.interpreter.launcher: {}", launcher);
@@ -805,10 +803,6 @@ public class InterpreterSetting {
 
   private boolean isRunningOnKubernetes() {
     return zConf.getRunMode() == ZeppelinConfiguration.RUN_MODE.K8S;
-  }
-
-  private boolean isRunningOnDocker() {
-    return zConf.getRunMode() == ZeppelinConfiguration.RUN_MODE.DOCKER;
   }
 
   public boolean isUserAuthorized(List<String> userAndRoles) {

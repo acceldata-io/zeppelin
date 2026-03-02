@@ -75,8 +75,7 @@ public class ZeppelinConfiguration {
 
   public enum RUN_MODE {
     LOCAL,
-    K8S,
-    DOCKER
+    K8S
   }
 
   public enum DEFAULT_UI {
