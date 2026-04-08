@@ -181,7 +181,7 @@
     <guava.version>32.0.1-jre</guava.version>
     <jackson.version>2.16.1</jackson.version>
     <testcontainers.version>1.19.0</testcontainers.version>
-    <netty.codec.http2.version>4.1.119.Final</netty.codec.http2.version>
+    <netty.codec.http2.version>4.1.132.Final</netty.codec.http2.version>
 
     <MaxMetaspace>512m</MaxMetaspace>
 
