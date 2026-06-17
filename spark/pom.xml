@@ -35,7 +35,7 @@
     <properties>
         <interpreter.name>spark</interpreter.name>
 
-        <spark.version>3.5.5.3.3.6.5-SNAPSHOT</spark.version>
+        <spark.version>3.5.5.${odp.release.version}</spark.version>
         <protobuf.version>3.21.12</protobuf.version>
         <py4j.version>0.10.9.7</py4j.version>
         <spark.scala.version>2.12.18</spark.scala.version>
@@ -44,12 +44,9 @@
         <scala.compile.version>${spark.scala.version}</scala.compile.version>
 
         <spark.archive>spark-${spark.version}</spark.archive>
-        <spark.src.download.url>
-            https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.5-SNAPSHOT/${spark.archive}.tar.gz
-        </spark.src.download.url>
-        <spark.bin.download.url>
-            https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.5-SNAPSHOT/${spark.archive}-bin-${hadoop.version}.tgz
-        </spark.bin.download.url>
+        <standalone.tarballs.url>https://mirror.odp.acceldata.dev/ODP/standalone/${odp.release.version}</standalone.tarballs.url>
+        <spark.src.download.url>${standalone.tarballs.url}/${spark.archive}.tar.gz</spark.src.download.url>
+        <spark.bin.download.url>${standalone.tarballs.url}/${spark.archive}-bin-${hadoop.version}.tgz</spark.bin.download.url>
     </properties>
 
     <modules>
