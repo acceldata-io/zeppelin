@@ -88,6 +88,7 @@
   </modules>
 
   <properties>
+    <odp.release.version>3.3.6.5-SNAPSHOT</odp.release.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
     <!-- language versions -->
@@ -138,7 +139,7 @@
     <findbugs.jsr305.version>3.0.2</findbugs.jsr305.version>
     <project.oauth.version>1.35.0</project.oauth.version>
 
-    <hadoop3.3.version>3.3.6.3.3.6.5-SNAPSHOT</hadoop3.3.version>
+    <hadoop3.3.version>3.3.6.${odp.release.version}</hadoop3.3.version>
     <hadoop.version>${hadoop3.3.version}</hadoop.version>
     <hadoop.deps.scope>provided</hadoop.deps.scope>
 
