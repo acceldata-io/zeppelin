@@ -33,6 +33,7 @@
   <description>Zeppelin spark support</description>
 
   <properties>
+    <odp.release.version>3.2.3.7-2</odp.release.version>
     <!--library versions-->
     <maven.plugin.api.version>3.0</maven.plugin.api.version>
     <aether.version>1.12</aether.version>
@@ -40,19 +41,16 @@
     <wagon.version>2.7</wagon.version>
 
     <!-- spark versions -->
-    <spark.version>3.5.5.3.2.3.7-2</spark.version>
+    <spark.version>3.5.5.${odp.release.version}</spark.version>
     <protobuf.version>3.21.12</protobuf.version>
     <py4j.version>0.10.9.7</py4j.version>
     <spark.scala.version>2.12.18</spark.scala.version>
     <spark.scala.binary.version>2.12</spark.scala.binary.version>
 
     <spark.archive>spark-${spark.version}</spark.archive>
-    <spark.src.download.url>
-      https://mirror.odp.acceldata.dev/ODP/standalone/3.2.3.7-2/${spark.archive}.tar.gz
-    </spark.src.download.url>
-    <spark.bin.download.url>
-      https://mirror.odp.acceldata.dev/ODP/standalone/3.2.3.7-2/${spark.archive}-bin-${hadoop.version}.tgz
-    </spark.bin.download.url>
+    <standalone.tarballs.url>https://mirror.odp.acceldata.dev/ODP/standalone/${odp.release.version}</standalone.tarballs.url>
+    <spark.src.download.url>${standalone.tarballs.url}/${spark.archive}.tar.gz</spark.src.download.url>
+    <spark.bin.download.url>${standalone.tarballs.url}/${spark.archive}-bin-${hadoop.version}.tgz</spark.bin.download.url>
 
     <scala.compile.version>${spark.scala.version}</scala.compile.version>
     <!-- settings -->
@@ -586,7 +584,7 @@
     <profile>
       <id>spark-3.5</id>
       <properties>
-        <spark.version>3.5.5.3.2.3.7-2</spark.version>
+        <spark.version>3.5.5.${odp.release.version}</spark.version>
         <protobuf.version>3.21.12</protobuf.version>
         <py4j.version>0.10.9.7</py4j.version>
       </properties>
