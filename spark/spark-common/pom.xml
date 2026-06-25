@@ -31,8 +31,9 @@
   <packaging>jar</packaging>
   <name>Zeppelin: Spark Common</name>
   <properties>
+    <odp.release.version>3.2.3.7-2</odp.release.version>
     <scala.binary.version>2.12</scala.binary.version>
-    <spark.version>3.5.5.3.2.3.7-2</spark.version>
+    <spark.version>3.5.5.${odp.release.version}</spark.version>
   </properties>
 
   <dependencies>
