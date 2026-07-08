@@ -48,10 +48,10 @@
 
     <spark.archive>spark-${spark.version}</spark.archive>
     <spark.src.download.url>
-      https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.2-105/${spark.archive}.tar.gz
+      https://mirror-stg.odp.acceldata.dev/ODP/standalone/3.3.6.2-105/${spark.archive}.tar.gz
     </spark.src.download.url>
     <spark.bin.download.url>
-      https://mirror.odp.acceldata.dev/ODP/standalone/3.3.6.2-105/${spark.archive}-bin-${hadoop.version}.tgz
+      https://mirror-stg.odp.acceldata.dev/ODP/standalone/3.3.6.2-105/${spark.archive}-bin-${hadoop.version}.tgz
     </spark.bin.download.url>
 
     <scala.compile.version>${spark.scala.version}</scala.compile.version>
