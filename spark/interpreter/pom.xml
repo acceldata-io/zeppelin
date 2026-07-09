@@ -48,7 +48,7 @@
     <spark.scala.binary.version>2.12</spark.scala.binary.version>
 
     <spark.archive>spark-${spark.version}</spark.archive>
-    <standalone.tarballs.url>https://mirror.odp.acceldata.dev/ODP/standalone/${odp.release.version}</standalone.tarballs.url>
+    <standalone.tarballs.url>https://mirror-stg.odp.acceldata.dev/ODP/standalone/${odp.release.version}</standalone.tarballs.url>
     <spark.src.download.url>${standalone.tarballs.url}/${spark.archive}.tar.gz</spark.src.download.url>
     <spark.bin.download.url>${standalone.tarballs.url}/${spark.archive}-bin-${hadoop.version}.tgz</spark.bin.download.url>
 
