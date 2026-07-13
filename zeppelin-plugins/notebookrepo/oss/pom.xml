@@ -43,6 +43,20 @@
             <groupId>com.aliyun.oss</groupId>
             <artifactId>aliyun-sdk-oss</artifactId>
             <version>${oss.version}</version>
+            <exclusions>
+                <!-- Exclude transitive bcprov-jdk18on 1.79 (via aliyun-java-sdk-core) so it
+                     converges on the forced 1.84 below; fixes enforcer DependencyConvergence -->
+                <exclusion>
+                    <groupId>org.bouncycastle</groupId>
+                    <artifactId>bcprov-jdk18on</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- Force bcprov-jdk18on 1.84 to fix CVE-2026-5598 (aliyun-sdk pulls 1.79 transitively) -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk18on</artifactId>
+            <version>1.84</version>
         </dependency>
     </dependencies>
 
