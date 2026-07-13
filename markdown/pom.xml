@@ -54,6 +54,13 @@
        <artifactId>flexmark-all</artifactId>
     </dependency>
 
+    <!-- Force jsoup 1.14.2 to fix CVE-2021-37714 (flexmark pulls 1.11.3 transitively) -->
+    <dependency>
+      <groupId>org.jsoup</groupId>
+      <artifactId>jsoup</artifactId>
+      <version>${jsoup.version}</version>
+    </dependency>
+
     <dependency>
       <groupId>org.apache.commons</groupId>
       <artifactId>commons-lang3</artifactId>
