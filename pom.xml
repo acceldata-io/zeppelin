@@ -500,6 +500,12 @@
         <artifactId>jackson-core</artifactId>
         <version>${jackson.version}</version>
       </dependency>
+      <!-- Pin plexus-utils 3.6.1 to fix CVE-2025-67030 (maven-* 3.6.3 pulls 3.2.1 transitively) -->
+      <dependency>
+        <groupId>org.codehaus.plexus</groupId>
+        <artifactId>plexus-utils</artifactId>
+        <version>3.6.1</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
