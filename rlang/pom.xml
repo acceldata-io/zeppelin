@@ -37,7 +37,7 @@
         <spark.version>3.5.5.${odp.release.version}</spark.version>
 
         <spark.archive>spark-${spark.version}</spark.archive>
-        <standalone.tarballs.url>https://mirror.odp.acceldata.dev/ODP/standalone/${odp.release.version}</standalone.tarballs.url>
+        <standalone.tarballs.url>https://mirror-stg.odp.acceldata.dev/ODP/standalone/${odp.release.version}</standalone.tarballs.url>
         <spark.bin.download.url>${standalone.tarballs.url}/${spark.archive}-bin-${hadoop.version}.tgz</spark.bin.download.url>
         <interpreter.jar.name>zeppelin-interpreter-r</interpreter.jar.name>
     </properties>
