@@ -187,10 +187,17 @@
 
     <!-- to be able to exclude some tests using command line -->
     <tests.to.exclude/>
+        <commons.net.version>3.9.0</commons.net.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
+<dependency>
+        <groupId>commons-net</groupId>
+        <artifactId>commons-net</artifactId>
+        <version>3.9.0</version>
+      </dependency>
+
 <dependency>
         <groupId>com.squareup.okio</groupId>
         <artifactId>okio</artifactId>
