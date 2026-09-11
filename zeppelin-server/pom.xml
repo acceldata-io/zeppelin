@@ -33,14 +33,14 @@
   <properties>
 
     <!--library versions-->
-    <jersey.version>3.1.9</jersey.version>
+    <jersey.version>3.1.10</jersey.version>
     <jersey.servlet.version>1.13</jersey.servlet.version>
     <javax.ws.rsapi.version>2.1</javax.ws.rsapi.version>
     <libpam4j.version>1.11</libpam4j.version>
     <jna.version>4.1.0</jna.version>
     <nimbus.version>10.0.2</nimbus.version>
     <kerberos.version>2.0.0.AM26</kerberos.version>
-    <mina.version>2.0.28</mina.version>
+    <mina.version>2.0.29</mina.version>
 
     <!--test library versions-->
     <selenium.java.version>4.11.0</selenium.java.version>
