@@ -23,7 +23,7 @@
     <parent>
         <artifactId>zeppelin-interpreter-parent</artifactId>
         <groupId>org.apache.zeppelin</groupId>
-        <version>0.12.0.3.2.3.7-2</version>
+        <version>0.12.0.3.2.3.701-2</version>
         <relativePath>../zeppelin-interpreter-parent/pom.xml</relativePath>
     </parent>
 
@@ -33,7 +33,7 @@
     <description>Zeppelin Spark Support</description>
 
     <properties>
-    <odp.release.version>3.2.3.7-2</odp.release.version>
+    <odp.release.version>3.2.3.701-2</odp.release.version>
         <interpreter.name>spark</interpreter.name>
 
         <spark.version>3.5.5.${odp.release.version}</spark.version>
