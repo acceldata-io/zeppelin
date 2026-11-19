@@ -575,7 +575,7 @@
         <spark.version>4.0.0-preview2</spark.version>
         <protobuf.version>3.21.12</protobuf.version>
         <py4j.version>0.10.9.7</py4j.version>
-        <libthrift.version>0.16.0</libthrift.version>
+        <libthrift.version>0.24.0</libthrift.version>
       </properties>
     </profile>
 
